@@ -7,14 +7,22 @@
 
     body {
       font-family: 'Georgia', serif;
-      background: url('images/ocean.jpg') no-repeat right bottom;
-      background-size: 240%;
-      background-position: fixed;
       color: #f5f0e8;
+      background-color: #0b1c2e;   /* solid blue fallback */
       min-height: 100vh;
+      margin: 0;
       display: flex;
       flex-direction: column;
       overflow-x: hidden;
+    }
+/* === Fixed ocean background (bottom-right, 240% zoom) === */
+    .page-bg {
+      position: fixed;
+      inset: 0;                          /* top:0 right:0 bottom:0 left:0 */
+      z-index: -1;                       /* sit behind everything */
+      background: #0b1c2e url("images/ocean.jpg") right bottom / 240% no-repeat;
+      pointer-events: none;              /* clicks go through */
+      transform: translateZ(0);          /* keeps it crisp on mobile */
     }
 
     /* Animations */
@@ -462,3 +470,4 @@
   }
 
 }     
+
