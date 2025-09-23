@@ -24,6 +24,12 @@
       pointer-events: none;              /* clicks go through */
       transform: translateZ(0);          /* keeps it crisp on mobile */
     }
+    /* On phones/tablets, fill the screen so no blue shows */
+    @media (max-width: 768px) {
+    .page-bg {
+      background: #0b1c2e url("images/ocean.jpg") right bottom / cover no-repeat;
+      }
+    }
 
     /* Animations */
     @keyframes fadeUp {
@@ -470,4 +476,5 @@
   }
 
 }     
+
 
