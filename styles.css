@@ -1,0 +1,463 @@
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Georgia', serif;
+      background: url('Images/ocean.jpg') no-repeat right bottom;
+      background-size: 240%;
+      background-position: fixed;
+      color: #f5f0e8;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* Animations */
+    @keyframes fadeUp {
+      0% { opacity: 0; transform: translateY(40px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideInDown {
+      0% { opacity: 0; transform: translateY(-40px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Header (Nav) */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 1.2rem 5%;
+      display: flex;
+      justify-content: center;
+      z-index: 1000;
+      background: transparent; /* transparent navbar */
+      animation: slideInDown 1s ease forwards;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2.5rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #ccc;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover, nav a.active {
+      color: #d2b48c;
+    }
+
+    /* Hero Section */
+    .hero {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 1rem;
+      flex-direction: column;
+    }
+
+    .hero img {
+      width: clamp(120px, 20vw, 200px); /* responsive logo size */
+      height: auto;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 1.2s ease forwards;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.2rem, 3vw, 2rem);
+      letter-spacing: 1px;
+      color: #f5f0e8;
+      margin-bottom: 1rem;
+      opacity: 0;
+      animation: fadeUp 1.4s ease forwards;
+      animation-delay: 0.4s;
+    }
+
+    .hero p {
+      font-size: clamp(0.9rem, 2vw, 1.2rem);
+      color: #d2c9b6;
+      line-height: 1.6;
+      opacity: 0;
+      animation: fadeUp 1.6s ease forwards;
+      animation-delay: 0.8s;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 1rem 0;
+      background: transparent; /* transparent footer */
+      color: #ccc;
+      font-size: 0.9rem;
+      margin-top: auto;
+    }
+
+    footer p {
+      margin-bottom: 0.5rem;
+    }
+
+    .socials {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .socials a {
+      color: #ccc;
+      font-size: 1.2rem;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .socials a:hover {
+      color: #d2b48c;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav ul {
+        gap: 1.2rem;
+      }
+      nav a {
+        font-size: 1rem;
+      }
+    }
+/* CV Section */
+.cv-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 4rem 1rem;
+}
+
+/* CV Page Images */
+.cv-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 0; /* Remove extra padding to fill the screen */
+
+  /* Full-screen background */
+  width: 100vw;
+  min-height: 100vh; /* Full viewport height */
+  background: url('Images/ocean.jpg') no-repeat bottom right;
+  background-size: cover;       /* Fill entire viewport */
+  background-position: bottom;  /* Anchor bottom */
+  background-attachment: fixed; /* Optional: parallax effect */
+
+  /* Optional: overlay to make CV images stand out */
+  position: relative;
+}
+
+.cv-section::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* dark overlay */
+  z-index: 1;
+}
+
+.cv-section img.cv-page {
+  position: relative;
+  z-index: 2; /* above overlay */
+  width: 90%;
+  max-width: 800px;
+  height: auto;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  border-radius: 8px;
+  opacity: 0;
+}
+
+/* Animation utility */
+.animate-up {
+  animation: fadeUp 1.2s ease forwards;
+}
+
+/* Wrapper that contains both navbar and CV section */
+.cv-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: url('Images/ocean.jpg') no-repeat bottom right;
+  background-size: cover;       /* Fill entire viewport */
+  background-position: bottom;
+}
+
+/* Navbar scrolls normally */
+.cv-header {
+  position: relative;           /* Part of normal page flow */
+  width: 100%;
+  padding: 1.2rem 5%;
+  display: flex;
+  justify-content: center;
+  background: rgba(0,0,0,0.5); /* Semi-transparent so text is visible */
+  z-index: 2;                   /* Above background */
+}
+
+/* CV Section */
+.cv-section {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem 1rem;
+}
+
+/* Optional overlay if needed */
+.cv-section::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.35);
+  z-index: 1; /* Behind CV images */
+}
+
+/* CV Images */
+.cv-section img.cv-page {
+  position: relative;
+  z-index: 2;                  /* Above overlay */
+  width: 90%;
+  max-width: 800px;
+  height: auto;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  border-radius: 8px;
+  opacity: 0;
+  animation: fadeUp 1.2s ease forwards;
+}
+
+/* Events wrapper background */
+.events-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: url('Images/ocean.jpg') no-repeat bottom right;
+  background-size: cover;
+  background-position: bottom;
+  padding: 120px 2rem 4rem; /* top padding for navbar */
+}
+
+/* Toggle Buttons */
+.events-toggle {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.events-toggle button {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  background: rgba(210,180,140,0.2);
+  color: #f5f0e8;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+.events-toggle button.active,
+.events-toggle button:hover {
+  background: rgba(210,180,140,0.8);
+  color: #000;
+}
+
+/* Sections */
+.events-section {
+  display: none;
+}
+
+.events-section.active {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* Photo Gallery Masonry */
+.photo-gallery {
+  column-count: 4;      /* number of columns, adjust for screen size */
+  column-gap: 1rem;     /* gap between columns */
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.photo-gallery .event-img {
+  width: 100%;
+  height: auto;        /* keep aspect ratio */
+  margin-bottom: 1rem; /* vertical gap between images */
+  display: block;
+  border-radius: 8px;
+  transition: transform 0.3s;
+}
+
+.photo-gallery .event-img:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .photo-gallery {
+    column-count: 3;
+  }
+}
+
+@media (max-width: 768px) {
+  .photo-gallery {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .photo-gallery {
+    column-count: 1;
+  }
+}
+
+
+/* Video Gallery */
+.video-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.video-gallery video {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+.hero img {
+  width: 400px;
+  height: auto;
+}
+
+/* About Section */
+.about-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6rem 1rem 2rem;
+}
+
+.about-container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  width: 100%;
+  gap: 3rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-content {
+  flex: 1;
+  min-width: 300px;
+  max-width: 600px;
+}
+
+.about-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: #d2b48c;
+  text-align: center;
+}
+
+.about-content h2 {
+  font-size: 1.5rem;
+  margin: 1.5rem 0 0.8rem;
+  color: #d2b48c;
+}
+
+.about-text p {
+  line-height: 1.7;
+  margin-bottom: 1.2rem;
+  font-size: 1.1rem;
+}
+
+.about-text ul {
+  list-style: none;
+  padding-left: 1rem;
+}
+
+.about-text li {
+  margin-bottom: 0.7rem;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.about-text li:before {
+  content: "•";
+  color: #d2b48c;
+  font-size: 1.2rem;
+  position: absolute;
+  left: 0;
+  top: -0.1rem;
+}
+
+.about-image {
+  flex: 1;
+  min-width: 300px;
+  max-width: 400px;
+  display: flex;
+  justify-content: center;
+}
+
+.about-image img {
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .about-section {
+    padding: 5rem 1rem 2rem;
+  }
+  
+  .about-container {
+    flex-direction: column-reverse;
+    gap: 2rem;
+  }
+  
+  .about-content h1 {
+    font-size: 2rem;
+  }
+  
+  .about-content h2 {
+    font-size: 1.3rem;
+  }
+  
+  .about-text p {
+    font-size: 1rem;
+  }
+}     
