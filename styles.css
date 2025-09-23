@@ -7,7 +7,7 @@
 
     body {
       font-family: 'Georgia', serif;
-      background: url('Images/ocean.jpg') no-repeat right bottom;
+      background: url('images/ocean.jpg') no-repeat right bottom;
       background-size: 240%;
       background-position: fixed;
       color: #f5f0e8;
@@ -157,7 +157,7 @@
   /* Full-screen background */
   width: 100vw;
   min-height: 100vh; /* Full viewport height */
-  background: url('Images/ocean.jpg') no-repeat bottom right;
+  background: url('images/ocean.jpg') no-repeat bottom right;
   background-size: cover;       /* Fill entire viewport */
   background-position: bottom;  /* Anchor bottom */
   background-attachment: fixed; /* Optional: parallax effect */
@@ -196,7 +196,7 @@
   position: relative;
   width: 100%;
   min-height: 100vh;
-  background: url('Images/ocean.jpg') no-repeat bottom right;
+  background: url('images/ocean.jpg') no-repeat bottom right;
   background-size: cover;       /* Fill entire viewport */
   background-position: bottom;
 }
@@ -251,7 +251,7 @@
   position: relative;
   width: 100%;
   min-height: 100vh;
-  background: url('Images/ocean.jpg') no-repeat bottom right;
+  background: url('images/ocean.jpg') no-repeat bottom right;
   background-size: cover;
   background-position: bottom;
   padding: 120px 2rem 4rem; /* top padding for navbar */
@@ -460,4 +460,5 @@
   .about-text p {
     font-size: 1rem;
   }
+
 }     
