@@ -483,6 +483,34 @@ body.home {
   overflow: hidden;  /* stop scrolling */
 }
 
+/* === MOBILE FIX PACK === */
+
+/* 1) Let the nav wrap + shrink on phones so items don't vanish */
+@media (max-width: 768px) {
+  .cv-header nav { padding: 8px 12px; overflow: visible; }
+  .cv-header ul { display: flex; flex-wrap: wrap; gap: 8px 12px; justify-content: center; margin: 0; padding: 0; }
+  .cv-header a  { font-size: 14px; padding: 6px 8px; }
+  /* keep content below taller wrapped nav (but NOT on the no-scroll home) */
+  body:not(.home) { padding-top: 96px; }
+}
+@media (max-width: 400px) {
+  .cv-header a  { font-size: 13px; padding: 5px 6px; }
+  body:not(.home) { padding-top: 110px; }
+}
+
+/* 2) Make gallery columns responsive so nothing is cut off */
+.photo-gallery img { width: 100%; display: block; margin: 0 0 14px; }
+@media (min-width: 901px) { .photo-gallery { column-count: 3; column-gap: 14px; } }
+@media (max-width: 900px) { .photo-gallery { column-count: 2; column-gap: 12px; } }
+@media (max-width: 560px) { .photo-gallery { column-count: 1; column-gap: 10px; } }
+
+/* 3) Safety: prevent any media from overflowing the screen */
+img, video { max-width: 100%; height: auto; }
+
+
+
+
+
 
 
 
