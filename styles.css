@@ -41,25 +41,27 @@
       100% { opacity: 1; transform: translateY(0); }
     }
 
-    /* Header (Nav) */
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      padding: 1.2rem 5%;
-      display: flex;
-      justify-content: center;
-      z-index: 1000;
-      background: transparent; /* transparent navbar */
-      animation: slideInDown 1s ease forwards;
-    }
+    /* Header (Nav) — unified for all pages */
+header, .cv-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  width: 100%;
+  padding: 1.2rem 5%;
+  display: flex; justify-content: center;
+  z-index: 1000;
+  background: rgba(0,0,0,.30);          /* slight glass so text is readable */
+  backdrop-filter: blur(6px);
+  animation: slideInDown 1s ease forwards;
+}
 
     nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2.5rem;
-    }
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;                /* <-- lets it wrap on small screens */
+  gap: 1.2rem 2rem;
+  justify-content: center;
+  margin: 0; padding: 0;
+}
 
     nav a {
       text-decoration: none;
@@ -71,6 +73,11 @@
     nav a:hover, nav a.active {
       color: #d2b48c;
     }
+/* Space below the fixed header on scrolling pages */
+:root { --navH: 110px; }            /* header height; tweak if needed */
+body:not(.home) { padding-top: var(--navH); }
+@media (max-width: 400px) { :root { --navH: 130px; } }  /* a bit more on tiny phones */
+
 
     /* Hero Section */
     .hero {
@@ -151,124 +158,13 @@
         font-size: 1rem;
       }
     }
-/* CV Section */
-.cv-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
-  padding: 4rem 1rem;
-}
 
-/* CV Page Images */
-.cv-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
-  padding: 0; /* Remove extra padding to fill the screen */
-
-  /* Full-screen background */
-  width: 100vw;
-  min-height: 100vh; /* Full viewport height */
-  background: url('images/ocean.jpg') no-repeat bottom right;
-  background-size: cover;       /* Fill entire viewport */
-  background-position: bottom;  /* Anchor bottom */
-  background-attachment: fixed; /* Optional: parallax effect */
-
-  /* Optional: overlay to make CV images stand out */
-  position: relative;
-}
-
-.cv-section::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.4); /* dark overlay */
-  z-index: 1;
-}
-
-.cv-section img.cv-page {
-  position: relative;
-  z-index: 2; /* above overlay */
-  width: 90%;
-  max-width: 800px;
-  height: auto;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-  border-radius: 8px;
-  opacity: 0;
-}
-
-/* Animation utility */
-.animate-up {
-  animation: fadeUp 1.2s ease forwards;
-}
-
-/* Wrapper that contains both navbar and CV section */
-.cv-wrapper {
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
-  background: url('images/ocean.jpg') no-repeat bottom right;
-  background-size: cover;       /* Fill entire viewport */
-  background-position: bottom;
-}
-
-/* Navbar scrolls normally */
-.cv-header {
-  position: relative;           /* Part of normal page flow */
-  width: 100%;
-  padding: 1.2rem 5%;
-  display: flex;
-  justify-content: center;
-  background: rgba(0,0,0,0.5); /* Semi-transparent so text is visible */
-  z-index: 2;                   /* Above background */
-}
-
-/* CV Section */
-.cv-section {
-  position: relative;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
-  padding: 2rem 1rem;
-}
-
-/* Optional overlay if needed */
-.cv-section::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.35);
-  z-index: 1; /* Behind CV images */
-}
-
-/* CV Images */
-.cv-section img.cv-page {
-  position: relative;
-  z-index: 2;                  /* Above overlay */
-  width: 90%;
-  max-width: 800px;
-  height: auto;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-  border-radius: 8px;
-  opacity: 0;
-  animation: fadeUp 1.2s ease forwards;
-}
-
-/* Events wrapper background */
+/* Events wrapper (no extra background; .page-bg handles it) */
 .events-wrapper {
   position: relative;
   width: 100%;
   min-height: 100vh;
-  background: url('images/ocean.jpg') no-repeat bottom right;
-  background-size: cover;
-  background-position: bottom;
-  padding: 120px 2rem 4rem; /* top padding for navbar */
+  padding: 2rem 2rem 4rem;
 }
 
 /* Toggle Buttons */
@@ -483,32 +379,48 @@ body.home {
   overflow: hidden;  /* stop scrolling */
 }
 
-/* === MOBILE FIX PACK === */
-
-/* 1) Let the nav wrap + shrink on phones so items don't vanish */
+/* Small-phone polish */
 @media (max-width: 768px) {
-  .cv-header nav { padding: 8px 12px; overflow: visible; }
-  .cv-header ul { display: flex; flex-wrap: wrap; gap: 8px 12px; justify-content: center; margin: 0; padding: 0; }
-  .cv-header a  { font-size: 14px; padding: 6px 8px; }
-  /* keep content below taller wrapped nav (but NOT on the no-scroll home) */
-  body:not(.home) { padding-top: 96px; }
+  nav a { font-size: 1rem; }
 }
 @media (max-width: 400px) {
-  .cv-header a  { font-size: 13px; padding: 5px 6px; }
-  body:not(.home) { padding-top: 110px; }
+  nav a { font-size: .95rem; }
 }
 
-/* 2) Make gallery columns responsive so nothing is cut off */
-.photo-gallery img { width: 100%; display: block; margin: 0 0 14px; }
-@media (min-width: 901px) { .photo-gallery { column-count: 3; column-gap: 14px; } }
-@media (max-width: 900px) { .photo-gallery { column-count: 2; column-gap: 12px; } }
-@media (max-width: 560px) { .photo-gallery { column-count: 1; column-gap: 10px; } }
+/* === CV (clean) — background comes from .page-bg, not here === */
+.cv-wrapper { width: 100%; min-height: 100vh; }
 
-/* 3) Safety: prevent any media from overflowing the screen */
-img, video { max-width: 100%; height: auto; }
+.cv-section {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem 1rem;
+}
 
+.cv-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.35);
+  z-index: 1; /* behind images */
+}
 
+.cv-section img.cv-page {
+  position: relative;
+  z-index: 2;                  /* above overlay */
+  width: 90%;
+  max-width: 800px;
+  height: auto;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  border-radius: 8px;
+  opacity: 0;
+  animation: fadeUp 1.2s ease forwards;
+}
 
+.cv-wrapper { width: 100%; min-height: 100vh; }
 
 
 
