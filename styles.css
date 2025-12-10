@@ -429,10 +429,13 @@ body.home {
   gap:10px; margin-bottom: 18px;
 }
 .about-hero img{
-  width: clamp(200px, 40vw, 320px);
-  height: clamp(200px, 40vw, 320px);
-  border-radius: 50%;
-  object-fit: cover;
+  /* About page photo: rectangle 3:4 */
+.about-hero img{
+  width: clamp(210px, 36vw, 360px); /* grows nicely on bigger screens */
+  aspect-ratio: 3 / 4;              /* <- keeps 3:4 shape */
+  height: auto;                     /* let the browser calculate height */
+  object-fit: cover;                /* fills the box, crops edges if needed */
+  border-radius: 12px;              /* soft corners (change to 0 for sharp) */
   display: block;
   box-shadow: 0 6px 20px rgba(0,0,0,.35);
 }
@@ -441,6 +444,7 @@ body.home {
   color: #d2b48c; /* your gold */
   margin: 6px 0 0;
 }
+
 
 
 
