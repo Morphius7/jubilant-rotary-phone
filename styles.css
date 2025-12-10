@@ -430,23 +430,7 @@ body.home {
   display:flex; flex-direction:column; align-items:center; text-align:center;
   gap:10px;
   margin-bottom: 6px;      /* ↓ was bigger; this shrinks the gap */
-}
 
-  /* Rectangle, same responsive width as before */
-.about-hero img{
-  width: clamp(200px, 40vw, 320px); /* same width logic */
-  aspect-ratio: 4 / 5;              /* rectangle shape */
-  height: auto;
-  object-fit: cover;
-  border-radius: 0;              /* 0 for sharp corners */
-  display: block;
-  box-shadow: 0 6px 20px rgba(0,0,0,.35);
-}
-
-
-/* extra tiny phones */
-@media (max-width: 380px){
-  .about-hero img{ width: 180px; }   /* adjust if you want even smaller */
 
 
 }
@@ -459,6 +443,25 @@ body.home {
 /* tighten gap between name (h1) and About Me (h2) */
 .about-hero h1{ margin: 6px 0 4px; }            /* smaller bottom margin under your name */
 .about-section h2:first-child{ margin-top: 8px; }/* first h2 starts closer */
+
+/* === RESET: About hero layout & image size === */
+.about-hero{
+  padding-top: calc(var(--navH, 110px) + 8px);
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  gap: 10px; margin-bottom: 6px;
+}
+.about-hero img{
+  width: clamp(200px, 40vw, 320px);  /* same scale as before */
+  aspect-ratio: 4 / 5;               /* rectangle; change to 1/1 for circle */
+  height: auto;
+  object-fit: cover;
+  border-radius: 0;                   /* 12px for rounded, 50% for circle */
+  display: block;
+  box-shadow: 0 6px 20px rgba(0,0,0,.35);
+}
+.about-hero h1{ margin: 8px 0 0; }
+
+
 
 
 
