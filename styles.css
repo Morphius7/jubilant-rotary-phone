@@ -428,19 +428,17 @@ body.home {
   display:flex; flex-direction:column; align-items:center; text-align:center;
   gap:10px; margin-bottom: 18px;
 }
+  /* Rectangle, same responsive width as before */
 .about-hero img{
-  /* About page photo: rectangle 3:4 */
-.about-hero img{
-  /* About page photo: smaller rectangle */
-.about-hero img{
-  width: clamp(160px, 30vw, 260px); /* smaller on phones, caps at ~260px */
-  aspect-ratio: 4 / 5;              /* tidy rectangle shape */
+  width: clamp(200px, 40vw, 320px); /* same width logic */
+  aspect-ratio: 4 / 5;              /* rectangle shape */
   height: auto;
   object-fit: cover;
-  border-radius: 12px;               /* keep corners soft; set 0 for sharp */
+  border-radius: 12px;              /* 0 for sharp corners */
   display: block;
   box-shadow: 0 6px 20px rgba(0,0,0,.35);
 }
+
 
 /* extra tiny phones */
 @media (max-width: 380px){
@@ -453,6 +451,7 @@ body.home {
   color: #d2b48c; /* your gold */
   margin: 6px 0 0;
 }
+
 
 
 
