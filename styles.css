@@ -424,10 +424,14 @@ body.home {
 
 /* --- About page hero (photo + name) --- */
 .about-hero{
-  padding-top: calc(var(--navH, 110px) + 8px); /* keeps it below your fixed header */
+  /* --- About page hero (photo + name) --- */
+.about-hero{
+  padding-top: calc(var(--navH, 110px) + 8px);
   display:flex; flex-direction:column; align-items:center; text-align:center;
-  gap:10px; margin-bottom: 18px;
+  gap:10px;
+  margin-bottom: 6px;      /* ↓ was bigger; this shrinks the gap */
 }
+
   /* Rectangle, same responsive width as before */
 .about-hero img{
   width: clamp(200px, 40vw, 320px); /* same width logic */
@@ -451,6 +455,12 @@ body.home {
   color: #d2b48c; /* your gold */
   margin: 6px 0 0;
 }
+
+/* tighten gap between name (h1) and About Me (h2) */
+.about-hero h1{ margin: 6px 0 4px; }            /* smaller bottom margin under your name */
+.about-section h2:first-child{ margin-top: 8px; }/* first h2 starts closer */
+
+
 
 
 
