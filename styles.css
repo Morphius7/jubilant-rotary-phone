@@ -436,6 +436,32 @@ body.home {
   margin:6px 0 0;                    /* small gap above About Me */
 }
 
+/* Center the About photo + name */
+.about-hero{
+  padding-top: calc(var(--navH, 110px) + 8px);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;         /* centers the image horizontally */
+  text-align: center !important;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.about-hero img{
+  margin: 0 auto;              /* makes sure it's centered even if flex is overridden */
+  display: block;
+}
+
+.about-hero .about-name{
+  font-size: clamp(1.6rem, 5vw, 2.4rem);
+  color: #d2b48c;
+  margin: 6px auto 0;          /* centers the text block itself */
+  width: max-content;          /* prevents stretching edge-to-edge */
+}
+
+
+
 
 
 
