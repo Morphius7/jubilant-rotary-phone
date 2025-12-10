@@ -431,19 +431,29 @@ body.home {
 .about-hero img{
   /* About page photo: rectangle 3:4 */
 .about-hero img{
-  width: clamp(210px, 36vw, 360px); /* grows nicely on bigger screens */
-  aspect-ratio: 3 / 4;              /* <- keeps 3:4 shape */
-  height: auto;                     /* let the browser calculate height */
-  object-fit: cover;                /* fills the box, crops edges if needed */
-  border-radius: 12px;              /* soft corners (change to 0 for sharp) */
+  /* About page photo: smaller rectangle */
+.about-hero img{
+  width: clamp(160px, 30vw, 260px); /* smaller on phones, caps at ~260px */
+  aspect-ratio: 4 / 5;              /* tidy rectangle shape */
+  height: auto;
+  object-fit: cover;
+  border-radius: 12px;               /* keep corners soft; set 0 for sharp */
   display: block;
   box-shadow: 0 6px 20px rgba(0,0,0,.35);
+}
+
+/* extra tiny phones */
+@media (max-width: 380px){
+  .about-hero img{ width: 180px; }   /* adjust if you want even smaller */
+
+
 }
 .about-hero h1{
   font-size: clamp(1.6rem, 5vw, 2.4rem);
   color: #d2b48c; /* your gold */
   margin: 6px 0 0;
 }
+
 
 
 
