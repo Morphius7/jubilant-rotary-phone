@@ -263,11 +263,6 @@ body:not(.home) { padding-top: var(--navH); }
   box-shadow: 0 8px 20px rgba(0,0,0,0.4);
 }
 
-.hero img {
-  width: 400px;
-  height: auto;
-}
-
 /* About Section */
 .about-section {
   flex: 1;
@@ -422,50 +417,24 @@ body.home {
 
 .cv-wrapper { width: 100%; min-height: 100vh; }
 
-/* --- About page hero (photo + name) --- */
-.about-hero{
-  /* --- About page hero (photo + name) --- */
+/* --- About page hero (photo + name) — CLEAN --- */
 .about-hero{
   padding-top: calc(var(--navH, 110px) + 8px);
   display:flex; flex-direction:column; align-items:center; text-align:center;
-  gap:10px;
-  margin-bottom: 6px;      /* ↓ was bigger; this shrinks the gap */
-
-
-
+  gap:10px; margin-bottom:6px;
+}
+.about-hero img{
+  width: clamp(200px, 40vw, 320px);  /* same size as before */
+  aspect-ratio: 4 / 5;               /* rectangle */
+  height:auto; object-fit:cover;
+  border-radius:0; display:block;
+  box-shadow: 0 6px 20px rgba(0,0,0,.35);
 }
 .about-hero h1{
   font-size: clamp(1.6rem, 5vw, 2.4rem);
-  color: #d2b48c; /* your gold */
-  margin: 6px 0 0;
+  color:#d2b48c;
+  margin:6px 0 0;                    /* small gap above About Me */
 }
-
-/* tighten gap between name (h1) and About Me (h2) */
-.about-hero h1{ margin: 6px 0 4px; }            /* smaller bottom margin under your name */
-.about-section h2:first-child{ margin-top: 8px; }/* first h2 starts closer */
-
-/* === RESET: About hero layout & image size === */
-.about-hero{
-  padding-top: calc(var(--navH, 110px) + 8px);
-  display: flex; flex-direction: column; align-items: center; text-align: center;
-  gap: 10px; margin-bottom: 6px;
-}
-.about-hero h1{ margin:8px 0 0; }
-.about-hero img{
-  width: clamp(200px, 40vw, 320px);  /* same scale as before */
-  aspect-ratio: 4 / 5;               /* rectangle; change to 1/1 for circle */
-  height: auto;
-  object-fit: cover;
-  border-radius: 0;                   /* 12px for rounded, 50% for circle */
-  display: block;
-  box-shadow: 0 6px 20px rgba(0,0,0,.35);
-}
-.about-hero h1{ margin: 8px 0 0; }
-
-
-
-
-
 
 
 
